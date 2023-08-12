@@ -18,11 +18,6 @@ public class No<T> {
         this.proximo = null;
         this.anterior = null;
     }
-
-    public No(T elemento, No<T> proximo){
-        this.elemento = elemento;
-        this.proximo = proximo;
-    }
     
     public T getElemento() {
         return elemento;

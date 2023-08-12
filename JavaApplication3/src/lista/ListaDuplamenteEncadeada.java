@@ -35,10 +35,23 @@ public class ListaDuplamenteEncadeada<T> {
     
     public void remover(T elemento){
         No<T> remover = encontraLista(elemento);
-        remover = null;
+        
+        if(remover == null)
+            return;
+        
+        if (remover == this.inicio)
+            this.inicio = remover.getProximo();
+        else
+            remover.getAnterior().setProximo(remover.getProximo());
+
+        if (remover == this.fim)
+            this.fim = remover.getAnterior();
+        else
+            remover.getProximo().setAnterior(remover.getAnterior());
+    
+
         this.tamanho--;
-        remover.getAnterior().setProximo(remover.getProximo());
-        remover.getProximo().setAnterior(remover.getAnterior());
+        
        
     }
     
@@ -67,17 +80,14 @@ public class ListaDuplamenteEncadeada<T> {
     
     private No<T> encontraLista(T elemento){
         No<T> noAtual = this.inicio;
-        
-        if(this.tamanho == 1){
-            return noAtual;
-        }else{
-         while(noAtual.getProximo() != null){
-            if(noAtual.getElemento().equals(elemento)){
+
+        while (noAtual != null) {
+            if (noAtual.getElemento().equals(elemento))
                 return noAtual;
-            }
+        
             noAtual = noAtual.getProximo();
-            }   
         }
+        
         return null;
     }
 }
