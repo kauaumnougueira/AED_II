@@ -13,6 +13,10 @@ public class ListaDuplamenteEncadeada<T> {
     private No<T> fim;
     private int tamanho = 0;
     
+    public ListaDuplamenteEncadeada(T elemento){
+        inserir(elemento);
+    }
+    
     public int getTamanho(){
         return this.tamanho;
     }
@@ -30,7 +34,7 @@ public class ListaDuplamenteEncadeada<T> {
     }
     
     public void remover(T elemento){
-        No<T> remover = buscar(elemento);
+        No<T> remover = encontraLista(elemento);
         remover = null;
         this.tamanho--;
         remover.getAnterior().setProximo(remover.getProximo());
@@ -56,8 +60,13 @@ public class ListaDuplamenteEncadeada<T> {
         return builder.toString();
     }
     
-    public No<T> buscar(T elemento){
-         No<T> noAtual = this.inicio;
+    public String buscar(T elemento){
+         No<T> encontrado = encontraLista(elemento);
+         return encontrado.getElemento().toString();
+    }
+    
+    private No<T> encontraLista(T elemento){
+        No<T> noAtual = this.inicio;
         
         if(this.tamanho == 1){
             return noAtual;
