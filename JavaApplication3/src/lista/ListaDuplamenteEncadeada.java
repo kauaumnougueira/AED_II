@@ -29,5 +29,46 @@ public class ListaDuplamenteEncadeada<T> {
         this.tamanho++;
     }
     
+    public void remover(T elemento){
+        No<T> remover = buscar(elemento);
+        remover = null;
+        this.tamanho--;
+        remover.getAnterior().setProximo(remover.getProximo());
+        remover.getProximo().setAnterior(remover.getAnterior());
+       
+    }
     
+    public String imprimir(){
+        if(this.tamanho == 0){
+            return "[]";
+        }
+        
+        StringBuilder builder = new StringBuilder();
+        
+        No<T> impresso = this.inicio;
+        builder.append(impresso.getElemento()).append('\n');
+        
+        while(impresso.getProximo() != null){
+           builder.append(impresso.getProximo().getElemento()).append('\n'); 
+           impresso = impresso.getProximo();
+        }
+        
+        return builder.toString();
+    }
+    
+    public No<T> buscar(T elemento){
+         No<T> noAtual = this.inicio;
+        
+        if(this.tamanho == 1){
+            return noAtual;
+        }else{
+         while(noAtual.getProximo() != null){
+            if(noAtual.getElemento().equals(elemento)){
+                return noAtual;
+            }
+            noAtual = noAtual.getProximo();
+            }   
+        }
+        return null;
+    }
 }
