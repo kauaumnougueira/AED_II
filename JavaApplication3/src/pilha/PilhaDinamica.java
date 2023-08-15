@@ -25,17 +25,15 @@ public class PilhaDinamica<T> {
         
     }
     
-    public String imprimir(){
+    public void imprimir(){
         if(tamanho == 0)
-            return "[]";
+            System.out.println("[]");
         
-        StringBuilder builder = new StringBuilder();
         No<T> impresso = topo;
         while(impresso != null){
-            builder.append(impresso.getElemento()).append('\n');
+            System.out.println(impresso.getElemento().toString());
             impresso = impresso.getProximo();
         }
-        return builder.toString();
     }
     
     public void remover(){

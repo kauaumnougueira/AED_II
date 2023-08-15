@@ -55,22 +55,17 @@ public class ListaDuplamenteEncadeada<T> {
        
     }
     
-    public String imprimir(){
+    public void imprimir(){
         if(this.tamanho == 0){
-            return "[]";
+            System.out.println("[]");
         }
-        
-        StringBuilder builder = new StringBuilder();
         
         No<T> impresso = this.inicio;
-        builder.append(impresso.getElemento()).append('\n');
         
-        while(impresso.getProximo() != null){
-           builder.append(impresso.getProximo().getElemento()).append('\n'); 
-           impresso = impresso.getProximo();
+        while(impresso != null){
+            System.out.println(impresso.getElemento().toString());
+            impresso = impresso.getProximo();
         }
-        
-        return builder.toString();
     }
     
     public String buscar(T elemento){
