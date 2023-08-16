@@ -22,9 +22,9 @@ public class Application {
         T t4 = new T("Gabriel", 14);
         pilhaD.inserir(t4);
         
-        System.out.println(pilhaD.imprimir());
+        pilhaD.imprimir();
         
         pilhaD.remover();
-        System.out.println(pilhaD.imprimir());
+        pilhaD.imprimir();
     }
 }

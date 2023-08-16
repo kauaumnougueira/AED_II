@@ -22,9 +22,9 @@ public class Application {
         T t4 = new T("Gabriel", 14);
         listaDE.inserir(t4);
         
-        System.out.println(listaDE.imprimir());
+        listaDE.imprimir();
         
         listaDE.remover(t);
-        System.out.println(listaDE.imprimir());
+        listaDE.imprimir();
     }
 }
