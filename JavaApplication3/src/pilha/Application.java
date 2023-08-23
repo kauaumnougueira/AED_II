@@ -11,7 +11,7 @@ import ClassePadrao.T;
 public class Application {
     public static void main(String[] args){
         T t = new T("kaua", 14);
-        PilhaDinamica pilhaD = new PilhaDinamica(t);
+        Pilha pilhaD = new Pilha(t);
         
         T t2 = new T("Pedro", 16);
         pilhaD.inserir(t2);

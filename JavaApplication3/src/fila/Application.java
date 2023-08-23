@@ -11,7 +11,7 @@ import ClassePadrao.T;
 public class Application {
     public static void main(String[] args){
         T t = new T("kaua", 14);
-        FilaDinamica filaD = new FilaDinamica(t);
+        Fila filaD = new Fila(t);
         
         T t2 = new T("Pedro", 16);
         filaD.inserir(t2);

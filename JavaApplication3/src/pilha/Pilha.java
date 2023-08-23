@@ -8,11 +8,11 @@ package pilha;
  *
  * @author kaua
  */
-public class PilhaDinamica<T> {
+public class Pilha<T> {
     private No<T> topo;
     private int tamanho = 0;
     
-    public PilhaDinamica(T elemento){
+    public Pilha(T elemento){
         inserir(elemento);
     }
     
