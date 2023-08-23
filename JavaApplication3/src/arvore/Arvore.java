@@ -13,6 +13,10 @@ public class Arvore<T extends Comparable> {
     private No<T> raiz;
     private int tamanho = 0;
     
+    public Arvore(T elemento){
+        inserir(elemento);
+    }
+    
     public void inserir(T elemento){
        No<T> aux = new No<>(elemento);
        if(this.raiz == null){

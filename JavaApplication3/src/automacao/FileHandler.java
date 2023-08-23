@@ -23,7 +23,7 @@ class FileHandler {
     BUSCAR; colher
     
     */
-    String path = "../Exec.txt";
+    String path = "C:\\Users\\kaua\\Documents\\NetBeansProjects\\AED_II\\JavaApplication3\\src\\automacao\\Exec.txt";
     
     public String readingFile(){
        String lineSave = "";
