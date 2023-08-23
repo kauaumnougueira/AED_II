@@ -94,4 +94,15 @@ public class Arvore<T extends Comparable> {
         }
         return no;
     }
+    
+    public void imprimir(){
+        preOrdem(this.raiz);
+    }
+    public void preOrdem(No<T> atual){
+      if(atual != null){
+          System.out.println(atual.getElemento());
+          preOrdem(atual.getEsquerda());
+          preOrdem(atual.getDireita());
+      }
+    }
 }
