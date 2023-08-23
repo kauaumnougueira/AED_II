@@ -1,0 +1,19 @@
+Na Classe FileHandler temos:
+    função readinFile()
+        essa função recebe o path que é atributo da classe e transforma as linhas do arquivo em String
+
+Na classe Interpretador temos:
+    função estruturas()
+        ela separa o código de execução do arquivo de acordo com as estruturas criadas, utilizando a primeira linha do arquivo como comparação para identifica-las
+
+    função acao<Estrutura>
+        compara as strings recebidas para executar as ações de acordo com a estrutura
+
+    função toArray()
+        transforma a String vinda do FileHandler em Array
+
+    função acoesInterpretadas()
+        separa as posições de array que contem elemento, deixando uma posição para ação e outra para elemento respectivamente
+       
+    função acaoElemento()
+        identifica se é ação ou elemento
