@@ -14,7 +14,8 @@ public class Fila<T> {
     private int tamanho = 0;
     
     public Fila(T elemento){
-        inserir(elemento);
+        if(elemento != null)
+            inserir(elemento);
     }
     
     public void inserir(T elemento){
@@ -25,36 +26,44 @@ public class Fila<T> {
             fim.setProximo(no);
         fim = no;
         tamanho++;
+        System.out.println("Elemento inserido: " + elemento.toString());
     }
     
     public void imprimir(){
+        System.out.print("Impressao: ");
         if(tamanho == 0){
-            System.out.println("[]");
+            System.out.println("Fila vazia");
             return;
         }
         No<T> no = inicio;
         while(no != null){
-            System.out.println(no.getElemento().toString());
+            System.out.print(no.getElemento().toString() +" ");
             no = no.getProximo();
         }
+        System.out.println();
     }
     
     public void remover(){
         if(inicio != null){
+            System.out.println("Primeiro elemento removido: " + this.inicio.getElemento().toString());
             inicio = inicio.getProximo();
             tamanho--;
         }
     }
     
     public String buscar(T elemento){
-        No<T> no = inicio;
-        while(no != null){
-            if(no.getElemento().equals(elemento)){
-                return no.getElemento().toString();
+        if(this.tamanho != 0){
+            No<T> no = inicio;
+            while(no != null){
+                if(no.getElemento().equals(elemento)){
+                    return no.getElemento().toString();
+                }
+                no = no.getProximo();
             }
-            no = no.getProximo();
+            return "nao encontrado";
         }
-        return "[]";
+        
+        return "Fila vazia";
     }
     
 }

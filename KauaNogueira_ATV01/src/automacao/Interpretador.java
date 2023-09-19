@@ -21,7 +21,7 @@ public class Interpretador {
     public void estruturas(){
         String estrutura = execA[0];
         if(estrutura.equals("lista")){
-            Lista lista = new Lista(" ");
+            Lista lista = new Lista(null);
             String acoes[] = acoesInterpretadas(execA);
             for(int i = 0; i < acoes.length; i++){
                 if(acoes[i] == null){
@@ -31,7 +31,7 @@ public class Interpretador {
                 i++;
             }
         }else if(estrutura.equals("fila")){
-            Fila fila = new Fila(" ");
+            Fila fila = new Fila(null);
             String acoes[] = acoesInterpretadas(execA);
             for(int i = 0; i < acoes.length; i++){
                 if(acoes[i] == null){
@@ -41,7 +41,7 @@ public class Interpretador {
                 i++;
             }
         }else if(estrutura.equals("pilha")){
-            Pilha pilha = new Pilha(" ");
+            Pilha pilha = new Pilha(null);
             String acoes[] = acoesInterpretadas(execA);
             for(int i = 0; i < acoes.length; i++){
                 if(acoes[i] == null){
@@ -51,7 +51,7 @@ public class Interpretador {
                 i++;
             }
         }else if(estrutura.equals("arvore")){
-            Arvore arvore = new Arvore(" ");
+            Arvore arvore = new Arvore(null);
             String acoes[] = acoesInterpretadas(execA);
             for(int i = 0; i < acoes.length; i++){
                 if(acoes[i] == null){
@@ -68,8 +68,13 @@ public class Interpretador {
             lista.inserir(elemento);
         }else if(acao.equals("REMOVER")){
             lista.remover(elemento);
-        }else if(acao.equals("BUSCAR")){    
-            lista.buscar(elemento);
+        }else if(acao.equals("BUSCAR")){
+            try{
+                String buscado = lista.buscar(elemento);
+                System.out.println("Elemento buscado: " + buscado);
+            }catch(Exception e){
+                System.out.println("Elemento nao encontrado");
+            }
         }else if(acao.equals("IMPRIMIR")){
             lista.imprimir();
         }
@@ -81,7 +86,12 @@ public class Interpretador {
         }else if(acao.equals("REMOVER")){
             fila.remover();
         }else if(acao.equals("BUSCAR")){    
-            fila.buscar(elemento);
+            try{
+                String buscado = fila.buscar(elemento);
+                System.out.println("Elemento buscado: " + buscado);
+            }catch(Exception e){
+                System.out.println("Elemento nao encontrado");
+            }
         }else if(acao.equals("IMPRIMIR")){
             fila.imprimir();
         }
@@ -92,8 +102,13 @@ public class Interpretador {
             pilha.inserir(elemento);
         }else if(acao.equals("REMOVER")){
             pilha.remover();
-        }else if(acao.equals("BUSCAR")){    
-            pilha.buscar(elemento);
+        }else if(acao.equals("BUSCAR")){
+            try{
+                String buscado = pilha.buscar(elemento);
+                System.out.println("Elemento buscado: " + buscado);
+            }catch(Exception e){
+                System.out.println("Elemento nao encontrado");
+            }
         }else if(acao.equals("IMPRIMIR")){
             pilha.imprimir();
         }
@@ -104,8 +119,14 @@ public class Interpretador {
             arvore.inserir(elemento);
         }else if(acao.equals("REMOVER")){
             arvore.remover(elemento);
-        }else if(acao.equals("BUSCAR")){    
-            arvore.buscar(elemento);
+        }else if(acao.equals("BUSCAR")){   
+            try{
+                String buscado = arvore.buscar(elemento);
+                System.out.println("Elemento buscado: " + buscado);
+            }catch(Exception e){
+                System.out.println("Elemento nao encontrado");
+            }
+                
         }else if(acao.equals("IMPRIMIR")){
             arvore.imprimir();
         }
