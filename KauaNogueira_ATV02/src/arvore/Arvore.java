@@ -14,7 +14,8 @@ public class Arvore<T extends Comparable> {
     private int tamanho = 0;
     
     public Arvore(T elemento){
-        inserir(elemento);
+        if(elemento != null)
+            inserir(elemento);
     }
     
     public void inserir(T elemento){
@@ -22,6 +23,7 @@ public class Arvore<T extends Comparable> {
        if(this.raiz == null){
            this.raiz = aux;
            this.tamanho++;
+           System.out.println("Elemento inserido: " + aux.getElemento().toString());
        }else{
            No<T> atual = this.raiz;
            while(true){
@@ -31,6 +33,7 @@ public class Arvore<T extends Comparable> {
                    }else{
                        atual.setEsquerda(aux);
                        this.tamanho++;
+                       System.out.println("Elemento inserido: " + aux.getElemento().toString());
                        break;
                    }
                }else{
@@ -40,27 +43,12 @@ public class Arvore<T extends Comparable> {
                    }else{
                        atual.setDireita(aux);
                        this.tamanho++;
+                       System.out.println("Elemento inserido: " + aux.getElemento().toString());
                        break;
                    }
                }
            }
        }
-    }
-
-    public No<T> getRaiz() {
-        return raiz;
-    }
-
-    public void setRaiz(No<T> raiz) {
-        this.raiz = raiz;
-    }
-
-    public int getTamanho() {
-        return tamanho;
-    }
-
-    public void setTamanho(int tamanho) {
-        this.tamanho = tamanho;
     }
      
     public String buscar(T elemento){
@@ -68,10 +56,13 @@ public class Arvore<T extends Comparable> {
             No<T> atual = raiz;
             return buscarRecursivamente(atual, elemento).getElemento().toString();
         }
-        return "[]";
+        return "Arvore vazia";
     }
     public No<T> buscarRecursivamente(No<T> atual, T elemento) {
-        if (atual == null || atual.getElemento().equals(elemento)) 
+        if (atual == null)
+            return null;
+        
+        if (atual.getElemento().equals(elemento)) 
             return atual;
 
         return (atual.getEsquerda() != null) ? buscarRecursivamente(atual.getEsquerda(), elemento) : buscarRecursivamente(atual.getDireita(), elemento);
@@ -82,7 +73,12 @@ public class Arvore<T extends Comparable> {
         return null;
     }
     public void remover(T elemento) {
+        if(this.tamanho == 0){
+            System.out.println("Lista vazia: elemento " + elemento + " nao removido");
+            return;
+        }
         raiz = removerRecursivamente(raiz, elemento);
+        System.out.println("Elemento removido: " + elemento);
     }
 
     private No<T> removerRecursivamente(No<T> atual, T elemento) {
@@ -115,14 +111,18 @@ public class Arvore<T extends Comparable> {
         return no;
     }
     
-    public void imprimir(){
-        preOrdem(this.raiz);
+    public void imprimir() {
+        System.out.print("Impressao: ");
+        imprimirRecursivo(this.raiz);
+        System.out.println(); // Pular uma linha após a impressão completa
+        
     }
-    public void preOrdem(No<T> atual){
-      if(atual != null){
-          System.out.println(atual.getElemento());
-          preOrdem(atual.getEsquerda());
-          preOrdem(atual.getDireita());
-      }
+
+    private void imprimirRecursivo(No<T> no) {
+        if (no != null) {
+            imprimirRecursivo(no.getEsquerda());
+            System.out.print(no.getElemento() + " ");
+            imprimirRecursivo(no.getDireita());
+        }
     }
 }

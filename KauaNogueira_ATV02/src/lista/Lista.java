@@ -12,25 +12,10 @@ public class Lista<T> {
     private No<T> inicio;
     private No<T> fim;
     private int tamanho = 0;
-
-    public No<T> getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(No<T> inicio) {
-        this.inicio = inicio;
-    }
-
-    public No<T> getFim() {
-        return fim;
-    }
-
-    public void setFim(No<T> fim) {
-        this.fim = fim;
-    }
     
     public Lista(T elemento){
-        inserir(elemento);
+        if(elemento != null)
+            inserir(elemento);
     }
     
     public int getTamanho(){
@@ -47,6 +32,7 @@ public class Lista<T> {
         }
         this.fim = no;
         this.tamanho++;
+        System.out.println("Elemento inserido: " + elemento.toString());
     }
     
     public void remover(T elemento){
@@ -67,11 +53,12 @@ public class Lista<T> {
     
 
         this.tamanho--;
-        
+        System.out.println("Elemento removido: " +remover.getElemento().toString());
        
     }
     
     public void imprimir(){
+        System.out.print("Impressao: ");
         if(this.tamanho == 0){
             System.out.println("[]");
         }
@@ -79,14 +66,18 @@ public class Lista<T> {
         No<T> impresso = this.inicio;
         
         while(impresso != null){
-            System.out.println(impresso.getElemento().toString());
+            System.out.print(impresso.getElemento().toString() + " ");
             impresso = impresso.getProximo();
         }
+        System.out.println();
     }
     
     public String buscar(T elemento){
-         No<T> encontrado = encontraLista(elemento);
-         return encontrado.getElemento().toString();
+        if(this.tamanho != 0){
+            No<T> encontrado = encontraLista(elemento);
+            return encontrado.getElemento().toString();  
+        }
+        return "Lista vazia";
     }
     
     private No<T> encontraLista(T elemento){
@@ -101,5 +92,4 @@ public class Lista<T> {
         
         return null;
     }
-    
 }
