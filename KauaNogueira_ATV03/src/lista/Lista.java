@@ -8,7 +8,7 @@ package lista;
  *
  * @author kaua
  */
-public class Lista<T extends Comparable> {
+public class Lista<T> {
     private No<T> inicio;
     private No<T> fim;
     private int tamanho = 0;
