@@ -74,7 +74,7 @@ public class Application {
         bubbleSort(pares);
         lista.clear();
         for (Integer impar : impares) {
-        lista.add(impar);
+            lista.add(impar);
         }
 
         for (Integer par : pares) {

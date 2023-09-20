@@ -48,16 +48,25 @@ public class Application<T extends Comparable> {
         b.setElemento(temp);
     }
 
-    public T encontrarMediana(Lista lista) {
+    public void encontrarMediana(Lista lista) {
         quicksort(lista);
         int meio = lista.getTamanho() / 2;
+        
         No<T> atual = lista.getInicio();
 
         for (int i = 0; i < meio; i++) {
             atual = atual.getProximo();
         }
-
-        return atual.getElemento();
+        
+        if (lista.getTamanho() % 2 == 1) {
+            System.out.println("Mediana: " + atual.getElemento());
+        } else {
+            No<T> proximo = atual.getProximo();
+            System.out.println("Mediana: " + ((int) atual.getElemento() + (int) proximo.getElemento()) / 2.0);
+        }
+        
+            System.out.println("Mediana: " + atual.getElemento());
+        
     }
     public static void main(String[] args) {
         Lista numeros = new Lista(null);
@@ -74,10 +83,9 @@ public class Application<T extends Comparable> {
             
         }
         Application<Integer> app = new Application<>(); 
-        Integer mediana = app.encontrarMediana(numeros);
+        app.encontrarMediana(numeros);
 
-        System.out.println(mediana);
-        
+        numeros.imprimir();
     }
     
     
