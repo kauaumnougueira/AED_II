@@ -71,7 +71,7 @@ public class Application<T extends Comparable> {
     public static void main(String[] args) {
         Lista numeros = new Lista(null);
         try{
-            File arquivo = new File("src\\questao3\\dadosQ3.txt");
+            File arquivo = new File("src\\entradas\\dadosQ3.txt");
             Scanner sc = new Scanner(arquivo);
             String linha_dados = sc.nextLine();
             

@@ -85,7 +85,7 @@ public class Application {
     public static void main(String[] args){
         ArrayList<Integer> numeros = new ArrayList<>();
         try{
-            File arquivo = new File("src\\questao4\\dadosQ4.txt");
+            File arquivo = new File("src\\entradas\\dadosQ4.txt");
             Scanner sc = new Scanner(arquivo);
             String linha_dados = sc.nextLine();
             

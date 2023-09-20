@@ -104,7 +104,7 @@ public class Application{
     public static void main(String[] args){
         Lista<Produto> produtos = new Lista<>(null);
         try{
-            File arquivo = new File("src\\questao2\\dadosQ2.txt");
+            File arquivo = new File("src\\entradas\\dadosQ2.txt");
             Scanner sc = new Scanner(arquivo);
             String linha_dados = sc.nextLine();
             
