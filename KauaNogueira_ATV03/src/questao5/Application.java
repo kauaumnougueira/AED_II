@@ -37,31 +37,38 @@ public class Application {
             String X_linha = sc.nextLine();
             String[] xises = X_linha.split(", ");
             int[] X = new int[xises.length];
-            
+            int countZ = 0;
             for(int i = 0; i < xises.length; i++){
+                if(xises[i].equals("0"))
+                   countZ++; 
                 X[i] = Integer.parseInt(xises[i]);
             }
             
             String Y_linha = sc.nextLine();
             String[] yos = Y_linha.split(", ");
             int[] Y = new int[yos.length];
-            
-            for(int i = 0; i < yos.length; i++){
-                Y[i] = Integer.parseInt(yos[i]);
-            }
-            
-        
-            int j = 0;
-            for(int i = 0; i < X.length; i++){
-                if(X[i] == 0){
-                    X[i] = Y[j];
-                    j++;
+            if(countZ > yos.length){
+
+                for(int i = 0; i < yos.length; i++){
+                    Y[i] = Integer.parseInt(yos[i]);
                 }
-            }
-            questao5.Application app = new questao5.Application();
-            X = app.insertionSort(X);
-            for(int x : X){
-                System.out.print(x + " ");
+
+
+                int j = 0;
+                for(int i = 0; i < X.length; i++){
+                    if(X[i] == 0){
+                        X[i] = Y[j];
+                        j++;
+                    }
+                }
+                questao5.Application app = new questao5.Application();
+                X = app.insertionSort(X);
+                System.out.println("Mesclados e ordenados: ");
+                for(int x : X){
+                    System.out.print(x + " ");
+                }
+            }else{
+                System.out.println("Tamanho de Y incompatível com quantidade de espaços vazios em X");
             }
         }catch(FileNotFoundException e){
             
